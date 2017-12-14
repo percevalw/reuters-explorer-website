@@ -8,6 +8,14 @@
         <h1>Reuters dataset explorer</h1>
     </div>
     <div class="container">
-        <p>{{ text.replace('\n', '<br/>') | safe }}</p>
+        <h4>{{text.split('\n', maxsplit=1)[0] | safe}}</h4>
+        <p>{{ text.split('\n', maxsplit=1)[1].replace('\n', '<br/>') | safe }}</p>
+        <h3>Similar texts than you could be interested in :</h3>
+        <ul class="list-group">
+            {% for fileid_url, headline in similar_texts %}
+                <li class="list-group-item"><a href="{{fileid_url}}">{{headline | safe}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
     </div>
 </body>
