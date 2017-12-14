@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+  <title>Flaskr</title>
+  <link rel=stylesheet type=text/css href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Reuters dataset explorer</h1>
+    </div>
+    <div class="container">
+        <form class="form-horizontal"  action="/show" method="POST">
+            <div class="form-group row">
+                    <label class="col-form-label col-sm-3">Select a text</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" title="Pick a text" name="fileid">
+                            {% for fileid, headline in headlines.items() %}
+                                <option value="{{ fileid }}">{{ headline | safe }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="offset-sm-3 col-sm-9">
+                  <button type="submit" class="btn btn-info">Pick this one !</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
